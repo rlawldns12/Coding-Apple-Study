@@ -1,0 +1,8 @@
+.alert-box{
+    background-color: skyblue;
+    padding: 20px;
+    color: white;
+    border-radius: 5px;
+    display: none; /* 이걸로 css 숨김*/
+}
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="alert-box" id="alert-box">
+        <p class="input">알림창</p>    
+        <button onclick="ShowAlert('none')">닫기</button> 
+    </div>
+    <button  onclick="ShowAlert('block','아이디를 입력하세요')">버튼</button>
+    <button  onclick="ShowAlert('block','비밀번호를 입력하세요')">버튼2</button>
+    <script>
+            
+            function ShowAlert(event,input){
+            document.getElementById('alert-box').style.display = event;
+            document.getElementsByClassName('input')[0].innerText = input; // ClassName 함수를 사용하면 [n] 인덱싱을 해줘야 함.
+        }
+
+        
+        
+
+        //function CloseAlert(){
+          //  document.getElementById('alert-box').style.display = 'none';
+        //}
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+    </script>
+</body>
+</html>
