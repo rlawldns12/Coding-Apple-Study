@@ -9,6 +9,23 @@
   </head>
   <body>
 
+    <div class="black-bg">
+      <div class="white-bg">
+        <h4>로그인하세요</h4>
+        <form action="success.html">
+          <div class="my-3">
+            <input type="text" class="form-control" id="id">
+           </div>
+           <div class="my-3">
+             <input type="password" class="form-control" id="password">
+           </div>
+           <button type="submit" class="btn btn-primary" id="send">전송</button>
+           <button type="button" class="btn btn-danger" id="close">닫기</button>
+        </form>         
+      </div>
+    </div> 
+    
+
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <span class="navbar-brand">Navbar</span>
@@ -26,13 +43,50 @@
         <li class="list-group-item">And a fifth one</li>
       </ul>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+      <button class="modal-on">로그인</button>
+
+      <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous">
+      </script> 
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+              //여기 아래 부터 제이쿼리 사용 가능
+
+    </script>
+
+
     <script>
 
+
+      $('#send').on('click',function(e){
+        if($('#id').val() == ''){
+          alert('아이디를 입력하세요');
+          e.preventDefault(); // 폼 전송 막음
+        }else if($('#password').val() == ''){
+          alert('비밀번호를 입력하세요');
+          e.preventDefault(); // 폼 전송 막음
+        } 
+        else if($('#password').val().length <= 5 ){
+          alert('비번 좀 더 길게 입력')
+          e.preventDefault(); // 폼 전송 막음
+        }
+      })
+
+      $('.modal-on').on('click',function(){
+
+        $('.black-bg').addClass('modal-on');
+
+
+      })
+
+      $('#close').on('click',function(){
+        $('.black-bg').removeClass('modal-on')
+      })
 
         document.querySelector('.navbar-toggler').addEventListener('click', function(){
         document.querySelectorAll('.list-group')[0].classList.toggle('show'); // list-group 토글 기능
           });
+
+
         
 
 

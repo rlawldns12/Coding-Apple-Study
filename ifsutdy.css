@@ -7,22 +7,21 @@
 }
 
 .black-bg {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 5;
+    width : 100%;
+    height : 100%;
+    position : fixed;
+    background : rgba(0,0,0,0.5);
+    z-index : 5;
     padding: 30px;
-    visibility: hidden;
-    /* display : none 대용  모습만 숨김*/
-    opacity: 0;
+    opacity: 0 ;
+    visibility: hidden; /*dispaly : block 대용 모습만 숨김 */
     transition: all 0.5s;
 }
 
 .white-bg {
     background: white;
     border-radius: 5px;
-    padding: 30px;
+    padding: 30px;  
 }
 
 .login_show {
@@ -35,4 +34,10 @@
 .main-bg {
     padding: 100px 20px;
     background: lightgray;
+}
+
+.modal-on{
+    display: block;
+    opacity: 1;
+    visibility: visible;
 }
