@@ -18,27 +18,39 @@
 
     <script>
         function exam(){
-            if($('#exam').val() < 40){
+
+            const regex = /^[a-zA-Z0-9\[\]!@#$%^&*(),.?":{}|<>ㄱ-ㅎㅏ-ㅣ가-힣]+$/;
+
+
+            if($('#exam').val() < 40){  
                 console.log('불합격');
                 console.log('조건 1')
             }
-            else if($('#exam2').val() < 40){
+            else if($('#exam2').val() < 40 ){
                 console.log('불합격')
                 console.log('조건 2')
             }
 
             
-             if($('#exam').val() +  $('#exam2').val() < 120 ){
+            if (parseInt($('#exam').val()) + parseInt($('#exam2').val()) < 120 ){
                 console.log('불합격')
-                console.log('조건 3')           
-            }     
+                console.log('조건 3')  
+                console.log( parseInt($('#exam').val()) + parseInt($('#exam2').val()) );         
+            }   
+            if ((isNaN(parseInt($('#exam').val())) || isNaN(parseInt($('#exam2').val())))){
+                alert('장난ㄴㄴ');
+            } 
+            if ((parseInt($('#exam').val())) > 100 || (parseInt($('#exam2').val()) > 100)  || (parseInt($('#exam').val())) < 0  || (parseInt($('#exam2').val()) < 0)) {
+                alert('장난ㄴㄴ');
+            }
             else{
                 console.log('합격')
                 console.log('최종')
-               console.log( Number$('#exam').val() + Number$('#exam2').val())
-
+                console.log( parseInt($('#exam').val()) + parseInt($('#exam2').val()) );
+                console.log($('#exam').val());
+                console.log($('#exam2').val())
             }
-        
+
         }
     </script>
 </html>
