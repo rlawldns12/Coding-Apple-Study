@@ -49,6 +49,10 @@
         <button class="modal-on bth btn-danger" id="login">로그인</button>
       </div>
 
+      <div style="width: 200px; height: 100px; overflow-y: scroll;" class="lorem">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt reprehenderit necessitatibus nihil eius officia, adipisci placeat unde aliquid cum nam impedit modi. Ducimus unde architecto modi odio! Nam, corporis recusandae!
+      </div>
+
       <div style="height: 1000px;"></div>
 
 
@@ -209,7 +213,55 @@
             }
           })
 
+
+
+          // 스크롤 이밴트 코드 
+
+          window.addEventListener('scroll',function(){
+
+            let scroll_down = window.scrollY;
+            console.log(window.scrollY);
+            if(scroll_down >= 100){
+                $('.navbar-brand').css('font-size','20px');
+            }
+            else{
+              $('.navbar-brand').css('font-size','30px');
+            }
+          });
+
+
+          $('.lorem').on('scroll',function(){
+          let 스크롤양 = document.querySelector('.lorem').scrollTop;
+          let 실제높이 = document.querySelector('.lorem').scrollHeight;
+          let 높이 = document.querySelector('.lorem').clientHeight;
+
+
+          console.log(스크롤양+'스크롤 양',실제높이+'실제높이',높이+'높이');
+
+          if(스크롤양+높이 > 실제높이 -5){
+            alert('회원약관 다 봄');
+          }
+
+
+          })
+
+
+          // 검은 배경 클릭 시 모달창 제거
+
+          $('.black-bg').on('click',function(e){
+            console.log(e.target)
+            if(e.target == document.querySelector('.black-bg')){
+              document.querySelector('.black-bg').classList.remove('modal-on');
+            }
+          })
+
+        
+
+
           
-    </script>
+
+          
+          
+    </script> 
   </body>
 </html>
