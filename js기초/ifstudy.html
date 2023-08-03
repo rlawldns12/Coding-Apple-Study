@@ -94,16 +94,42 @@
 
 
     <script>
-
-      let 시작좌표 = 0;
+        let 이동거리 = 0;
+        let 시작좌표 = 0;
+        let down = 0;
+        let result = 이동거리 - 시작좌표;
 
       $('.slide-box').eq(0).on('mousedown',function(e){ // 마우스를 처음 눌렀을때 (다운)
           시작좌표  = e.clientX;
+          console.log(시작좌표)
+          down++;
         });
 
         $('.slide-box').eq(0).on('mousemove',function(e){ // 
-          console.log(시작좌표 - e.clientX);
-        })
+          if(down === 1){
+            이동거리 = e.clientX;
+            result = 이동거리 - 시작좌표;            
+            console.log(result);
+          $('.slide-container').css('transform',`translateX(${result}px)`)
+          }
+        });
+
+        $('.slide-box').eq(0).on('mouseup',function(e){ // 마우스를 처음 눌렀을때 (다운)
+          down = 0;
+          if(result <= -100){
+            $('.slide-container')
+            .css('transition','all 0.5s')
+            .css('transform','translateX(-100vw)');
+          }else{
+            $('.slide-container')
+            .css('transition','all 0.5s')
+            .css('transform','translateX(0vw)');
+          }
+          setTimeout(()=>{
+            $('.slide-container').css('transition','none');
+          },500)
+        });
+
 
 
 
