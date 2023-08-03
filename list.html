@@ -8,34 +8,18 @@
     <link href="/detail.css" rel="stylesheet">
 </head>
 <body>
+  <div class="container">
+    <div class="row">
+      <!--
+        <div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100">
+          <h5>Card title</h5>
+          <p>가격 : 70000</p>
+        </div>
+      -->
+    </div>
+  </div> 
 
-    <div class="card-group container">
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5 id="card-title1">Card title</h5>
-            <p id="card-price1">가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5 id="card-title2">Card title</h5>
-            <p id="card-price2">가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5 id="card-title3">Card title</h5>
-            <p id="card-price3">가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-      </div>
-      
       <form class="container my-5 form-group">
         <p>상품선택</p>
         <select class="form-select mt-2">
@@ -50,9 +34,9 @@
     </form>
 
     <div id="test">
-        
+
     </div>
-    
+
     
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous">
     </script> 
@@ -63,21 +47,21 @@
 
 
     <script>
-    /*var products = [
+    var products = [
         { id : 0, price : 70000, title : 'Blossom Dress' },
         { id : 1, price : 50000, title : 'Springfield Shirt'},
         { id : 2, price : 60000, title : 'Black Monastery' }
     ];
 
-    document.querySelector('#card-price1').innerHTML = '가격 : ' + products[0].price
+    /* document.querySelector('#card-price1').innerHTML = '가격 : ' + products[0].price
     document.querySelector('#card-price2').innerHTML = '가격 : ' + products[1].price
     document.querySelector('#card-price3').innerHTML = '가격 : ' + products[2].price
 
     document.querySelector('#card-title1').innerHTML = products[0].title
     document.querySelector('#card-title2').innerHTML = products[1].title
-    document.querySelector('#card-title3').innerHTML = products[2].title;
+    document.querySelector('#card-title3').innerHTML = products[2].title; */
 
-    console.log(products[2].title)*/
+    console.log(products[2].title)
 
 
     let pants = [28,30,32,34];
@@ -129,6 +113,43 @@ for (let key in obj){
 
 }
 
+
+  $.get('https://codingapple1.github.io/price.json',{name : 'kim'})
+  .done(function(data){
+    console.log(data);
+  })
+  .fail(function(){
+    console.log('실패함');
+  })
+
+
+  fetch('https://codingapple1.github.io/price.json')
+  .then(res => res.json())
+  .then(function(data){
+    console.log(data)
+  })
+  .catch(function(error){
+    console.log('실패함')
+  });
+
+
+  /* 레이아웃 3개 만들기  */
+
+
+
+
+
+
+
+    products.forEach(function(data,i){
+      let layout = `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${data.title}</h5>
+            <p>가격 : ${data.price}</p>
+              </div>`;
+
+      $('.row').append(layout)
+    })
 
 
     </script>

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="/detail.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+        </div>
+    </div> 
+
+    <div class="container">
+        <button class="btn btn-danger" id="more">더보기</button>
+        <button class="btn btn-danger" id="price">가격순정렬</button>    
+        <button class="btn btn-danger" id="below">6만원 이하 상품보기</button>    
+        <button class="btn btn-danger" id="cba">다나가순 정렬</button> 
+        <button class="btn btn-danger" id="revert">가나다순 정렬</button>
+        <button class="btn btn-danger" id="originally">원래대로</button>
+    </div>
+
+
+
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous">
+    </script> 
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+            //여기 아래 부터 제이쿼리 사용 가능
+    </script>
+
+
+    <script>
+
+
+        let count = 0;
+
+
+        $('#more').click(function(){
+            count++;
+            if(count === 1){
+                $.get('https://codingapple1.github.io/js/more1.json')
+        .done((data) =>{
+            data.forEach((a,i) => {
+                let layout = `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${a.title}</h5>
+            <p>가격 : ${a.price}</p>
+            </div>`;
+            console.log(a)
+            $('.row').append(layout)
+            })
+            
+        });
+            }
+            else if(count === 2){
+                $.get('https://codingapple1.github.io/js/more2.json')
+                .done((data2) => {
+                data2.forEach((a,i) => {
+                    let layout2 = `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${a.title}</h5>
+            <p>가격 : ${a.price}</p>
+            </div>`;
+            $('.row').append(layout2)
+
+                })
+            })
+        } else{
+            $('.btn-danger').addClass('show')
+        }
+        })
+
+    let products = [
+        { id : 0, price : 70000, title : 'Blossom Dress' },
+        { id : 1, price : 50000, title : 'Springfield Shirt'},
+        { id : 2, price : 60000, title : 'Black Monastery' }
+    ];
+
+    let products1 = [
+        { id : 0, price : 70000, title : 'Blossom Dress' },
+        { id : 1, price : 50000, title : 'Springfield Shirt'},
+        { id : 2, price : 60000, title : 'Black Monastery' }
+    ];
+
+        let ex = products.filter(function(a){
+            return a.price <= 60000
+        })
+        console.log(products)
+        
+
+    $('#price').click(function(){
+        products.sort(function(a,b){
+            return a.price - b.price;
+        })
+        $('.row').html('');
+        products.forEach(function(data,i){ // 정렬된 data
+        let layout = `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${data.title}</h5>
+            <p>가격 : ${data.price}</p>
+            </div>`;
+
+        $('.row').append(layout);
+        console.log(products);
+            })
+            })  
+
+    $('#below').click(function(){
+    let below_6 = products.filter(function(a){
+            return a.price <= 60000;
+        })
+        console.log(below_6) // 여가까지 잘됨
+        $('.row').html('');
+        below_6.forEach(function(a,i){ // 
+        let layout = `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${a.title}</h5>  
+            <p>가격 : ${a.price}</p>
+            </div>`;
+
+        $('.row').append(layout);
+        console.log(below_6);
+            });
+    })
+
+
+    $('#cba').click(function(){
+    products.sort(function(a,b){
+            if(a.title < b.title) return 1;
+            if(a.title > b.title) return -1;
+            if(a.title === b.title) return 0;
+        })
+        $('.row').html('');
+        products.forEach(function(a,i){  
+        let layout = `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${a.title}</h5>  
+            <p>가격 : ${a.price}</p>
+            </div>`;
+
+        $('.row').append(layout);
+        console.log(products);
+            });
+    })
+
+    $('#revert').click(function(){
+    products.sort(function(a,b){
+            if(a.title < b.title) return -1;
+            if(a.title > b.title) return 1;
+            if(a.title === b.title) return 0;
+
+        })
+        $('.row').html('');
+        products.forEach(function(a,i){  
+        let layout = `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${a.title}</h5>  
+            <p>가격 : ${a.price}</p>
+            </div>`;
+
+        $('.row').append(layout);
+        console.log(products);
+            });
+    })
+
+    $('#originally').click(function(){
+        $('.row').html('');
+        products1.forEach(function(a,i){  
+        let layout = `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${a.title}</h5>  
+            <p>가격 : ${a.price}</p>
+            </div>`;
+
+        $('.row').append(layout);
+        console.log(products1);
+            });
+    })
+
+
+
+
+  /* 레이아웃 3개 만들기  */
+
+
+
+
+    products.forEach(function(data,i){
+    let layout = `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${data.title}</h5>
+            <p>가격 : ${data.price}</p>
+            <button class="buy">구매</button>
+            </div>`;
+            
+    $('.row').append(layout)
+    })
+
+    $('.buy').click(function(e) {
+    let title = $(e.target).siblings('h5').text();
+
+    if (localStorage.getItem('cart') !== null) {
+        let 꺼낸거 = JSON.parse(localStorage.getItem('cart'));
+        꺼낸거.push(title);
+        localStorage.setItem('cart', JSON.stringify(꺼낸거));
+    } else {
+        localStorage.setItem('cart', JSON.stringify([title]));
+    }
+});
+
+    
+
+    /* 내가 누른요소의 형제요소 찾기*/
+
+
+
+    /* 1. 내가 누른 요소의 형제 요소 찾기 
+        2. 배열에 이미 있으면 배열 수정(원래 있던거 꺼내고 수정 다시 넣기)
+        3. 배열에 없으면 넣기
+
+    
+    
+    
+    
+    
+    
+    */
+
+
+
+
+
+
+
+
+
+
+
+    let arr_test = [1,2,3];
+    let new_arr = JSON.stringify(arr_test); // Json으로 변환
+
+    // 배열,객체는 json으로 변환하여 로컬스토리지 저장 json은 문자열바슷함
+    localStorage.setItem('num',new_arr);
+    let 꺼낸거 = localStorage.getItem('num');
+    JSON.parse(꺼낸거) // json 에서 배열이나,객체로 변환 
+    console.log(꺼낸거)
+    
+
+    /*  sort() 와 filter()
+    sort 원본 변형o
+    filter() 원본 변형x 따라서 변수에 저장하여 사용 
+    */ 
+
+
+    </script>
+</body>
+</html>

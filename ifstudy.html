@@ -63,18 +63,18 @@
       <div style="overflow: hidden;">
         <div class="slide-container">
           <div class="slide-box" id="img_1">
-            <img src="car1.png">
+            <img src="car1.png" draggable="false">
           </div>
           <div class="slide-box" id="img_2">
-            <img src="car2.png"> 
+            <img src="car2.png" draggable="false"> 
           </div>
           <div class="slide-box" id="img_3">
-            <img src="car3.png">
+            <img src="car3.png" draggable="false">
           </div>
         </div>
       </div>
 
- 
+
 
       <button class="slide-1">1</button>
       <button class="slide-2">2</button>
@@ -95,7 +95,19 @@
 
     <script>
 
-      $('#send').on('click',function(e){
+      let 시작좌표 = 0;
+
+      $('.slide-box').eq(0).on('mousedown',function(e){ // 마우스를 처음 눌렀을때 (다운)
+          시작좌표  = e.clientX;
+        });
+
+        $('.slide-box').eq(0).on('mousemove',function(e){ // 
+          console.log(시작좌표 - e.clientX);
+        })
+
+
+
+        $('#send').on('click',function(e){
         let input_id = $('#id').val();
         let input_password = $('#password').val();
 
@@ -177,7 +189,7 @@
           let current_picture3 = $('#img_3');
 
           $('.slide-2').on('click',function(){
-            $('.slide-container').css('transform','translateX(-{}00vw)');
+            $('.slide-container').css('transform','translateX(-100vw)');
           })
           $('.slide-1').on('click',function(){
             $('.slide-container').css('transform','translateX(0)');

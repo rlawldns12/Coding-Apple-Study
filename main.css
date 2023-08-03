@@ -5,4 +5,18 @@
     border-radius: 5px;
     display: block; /* 이걸로 css 숨김*/
 }
-
+.grey{
+    background: lightgrey;
+    height: 2000px;
+    margin-top: 500px;
+}
+.image{
+    float: right;
+    width: 300px;
+    position: sticky;
+    top: 100px;
+}
+.text{
+    float: left;
+    width: 300px;
+}

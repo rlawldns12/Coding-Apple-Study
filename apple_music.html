@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/apple_music.css" rel="stylesheet">
+</head>
+<body>
+    <div class="card-background">
+        <div class="card-box">
+            <img src="card1.png">
+        </div>
+        <div class="card-box">
+            <img src="card2.png">
+        </div>
+        <div class="card-box">
+            <img src="card3.png">
+        </div>
+    </div>
+
+
+
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous">
+    </script> 
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+            //여기 아래 부터 제이쿼리 사용 가능
+    </script>
+
+
+    <script>
+        $(window).scroll(function(){
+            let 높이 =$(window).scrollTop();
+            console.log(높이);
+
+            let y = (-1/500) * 높이 + 115/50;
+
+            $('.card-box').eq(0).css('opacity',y);
+
+            let z = (-1/5000) * 높이 + 565/500;
+            $('.card-box').eq(0).css('transform', `scale( ${z} )`);
+        })
+    </script>
+
+
+</body>
+</html>

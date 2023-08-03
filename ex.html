@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list-wrap">
+        <li id="list-1">aaa</li>
+        <li id="list-2">bbb</li>
+        <li id="list-3">ccc</li>
+    </ul>    
+    <script>
+            let second = document.querySelector("#list-2");
+    // 두번째 자식을 변수에 담는다.
+    let preSibling = second.previousElementSibling;   
+    // 변수에 담은 요소의 이전 형제를 찾아 변수에 저장
+    let nexSibling = second.nextSibling;
+    // 변수에 담은 요소의 다음 형제를 찾아 변수에 저장
+    // * 이전/다음 형제에 다른 메소드를 이용해서 console.log 차이점을 비교해봤다.
+
+    console.log(preSibling);
+    console.log(nexSibling);
+
+    </script>
+</body>
+</html>
