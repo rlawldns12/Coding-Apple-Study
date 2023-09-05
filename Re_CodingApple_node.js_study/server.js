@@ -7,7 +7,6 @@ const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 require('dotenv').config()
 
-
 const MongoClient = require('mongodb').MongoClient;
 app.set('view engine', 'ejs');
 
@@ -140,10 +139,6 @@ function 로그인했니(요청, 응답, next) { // 미들웨어
 
 
 
-
-
-
-
 passport.use(new LocalStrategy({ // 로그인 후 세션을 저장할 것인지
   usernameField: 'id', // 유저가 입력한 항목 정의 
   passwordField: 'pw',
@@ -227,4 +222,29 @@ app.use('/board/sub',require('./routes/board.js'));
 // 요청과 응답 중간에 있는 거
 
 // 중복되는 url은 라우터로 정리 /shop식으로 직관적으로 만들기 
+let multer = require('multer');
 
+var storage = multer.diskStorage({
+  destination : function(req,file,cb){
+    cb(null,'./public/image')
+  },
+  filename : function(req, file, cb){
+    cb(null, file.originalname + '날짜')
+  }
+});
+
+var upload = multer({storage : storage});
+
+
+
+app.get('/upload', function(요청,응답){
+  응답.render('upload.ejs');
+})
+
+app.post('/upload',upload.single('profile'),function(요청,응답){
+  응답.send('업로드 완료');
+});
+
+app.get('/image/:imageName', function(요청,응답){
+  응답.sendFile(__dirname + 'public/image' + 요청.params.imageName)
+})
